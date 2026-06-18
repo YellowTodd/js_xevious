@@ -1,0 +1,640 @@
+
+/*
+*@import url('crt.css');
+*/
+
+/*
+ * 要素の基本スタイル
+ */
+html, body {
+	margin:				0;
+	padding:			0;
+	border:				0;
+}
+body {
+	background-color:	black;
+	color:				white;
+	font-size:			16px;
+	font-family:		Arial;
+	font-weight:		200;
+	line-height:		1.4em;
+	word-wrap: 			break-word;
+	overflow-wrap:		break-word;	/*単語の途中でも改行*/	
+}
+div {
+	width:				100%;
+	padding:			0;
+	border:				0;
+	box-sizing: 		border-box;	/*パディングとボーダーを幅と高さに含める*/
+}
+table {
+	border-collapse: 	collapse;
+	table-layout:		fixed;
+}
+th,td {
+	margin:				0;
+	padding:			0;
+}
+
+a:link    { color: #00ffff; }
+a:visited { color: #00ddff; }
+a:hover   { color: #aaffff; }
+a:active  { color: #ffff00; }
+
+/*
+ * クラス
+ */
+.vcenter {
+	display:			flex;
+	align-items:		center; /* 縦方向中央揃え */
+	-webkit-align-items:center; /* 縦方向中央揃え（Safari用） */
+}
+
+.hcenter {
+	display:			flex;
+	justify-content:	center; /* 横方向中央揃え */
+	-webkit-justify-content:center; /* 横方向中央揃え（Safari用） */
+}
+
+.disableSelection {
+	user-select:		none;
+	-moz-user-select:	none;
+	-ms-user-select:	none;
+	-khtml-user-select:	none;
+	-webkit-user-select:none;
+	touch-callout:		none;
+	-webkit-touch-callout:none;
+}
+
+.game_screen {
+	position:			absolute;
+	left:				0px;
+	top:				0px;
+	width:				100%;
+	height:				100%;
+}
+.text {
+	position:			absolute;
+	width:				9px;
+	height:				9px;
+	background-image:	url('images/fonts.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.text_palette {
+	position:			absolute;
+	width:				10px;
+	height:				10px;
+	-webkit-mask-image:	url('images/fonts.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.forest {
+	background-image:	url('images/forest.gif');
+	background-repeat:	no-repeat;
+	z-index:			0;
+	visibility:			hidden;
+}
+.ground {
+	background-image:	url('images/back.png');
+	background-repeat:	no-repeat;
+	z-index:			0;
+	visibility:			hidden;
+}
+.object {
+	position:			absolute;
+	background-repeat:	no-repeat;
+}
+.palette {
+}
+.palette_cinder {
+}
+.size4 {
+	width:				4px;
+	height:				4px;
+}
+.size8 {
+	width:				8px;
+	height:				8px;
+}
+.size14 {
+	width:				14px;
+	height:				14px;
+}
+.size16 {
+	width:				16px;
+	height:				16px;
+}
+.size32 {
+	width:				32px;
+	height:				32px;
+}
+.size40 {
+	width:				40px;
+	height:				40px;
+}
+.size96 {
+	width:				96px;
+	height:				96px;
+}
+.flying_object {
+	background-image:	url('images/f-object.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.flying_palette {
+	-webkit-mask-image:	url('images/f-object.gif');
+	overflow:			hidden;
+}
+.flying_explosion {
+	background-image:	url('images/f-explosion.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+	visibility:			hidden;
+}
+.flying-shadow {
+	-webkit-filter:		drop-shadow(22px 22px 2px rgba(0, 0, 0, 0.5));
+	-moz-filter:		drop-shadow(22px 22x 2px rgba(0, 0, 0, 0.5));
+	-ms-filter:			drop-shadow(22px 22px 2px rgba(0, 0, 0, 0.5));
+	filter:				drop-shadow(22px 22px 2px rgba(0, 0, 0, 0.5));
+}
+.blaster {
+	background-image:	url('images/blaster.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.zapper {
+	background-image:	url('images/zapper.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.solvalou_explosion {
+	background-image:	url('images/s-explosion.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+	visibility:			hidden;
+}
+.spario {
+	background-image:	url('images/spario.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.garu_spario {
+	background-image:	url('images/gspario.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.brag_spario {
+	background-image:	url('images/bspario.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.bacura {
+	background-image:	url('images/bacura.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.zakato {
+	background-image:	url('images/zakato.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.brag_zakato {
+	background-image:	url('images/bzakato.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.sheonite {
+	background-image:	url('images/shionite.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.sheonite_palette {
+	-webkit-mask-image:	url('images/shionite.gif');
+	overflow:			hidden;
+}
+.galboss {
+	background-image:	url('images/galboss.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.ground_object {
+	background-image:	url('images/g-object1.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.ground_palette {
+	-webkit-mask-image:	url('images/g-object1.gif');
+	overflow:			hidden;
+}
+.ground-shadow {
+/*
+	-webkit-filter:		drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.9));
+	-moz-filter:		drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.9));
+	-ms-filter:			drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.9));
+	filter:				drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.9));
+*/
+	-webkit-filter:		drop-shadow(1.5px 1.5px 1px rgba(0, 0, 0, 0.9));
+	-moz-filter:		drop-shadow(1.5px 1.5px 1px rgba(0, 0, 0, 0.9));
+	-ms-filter:			drop-shadow(1.5px 1.5px 1px rgba(0, 0, 0, 0.9));
+	filter:				drop-shadow(1.5px 1.5px 1px rgba(0, 0, 0, 0.9));
+}
+.barra-shadow {
+	float:				left;
+	left:				1px;
+	top:				1px;
+	width:				18px;
+	height:				18px;
+	clip-path:			polygon(
+							14px 1px,
+							18px 18px,
+							1px 14px
+						);
+	background-color:	black;
+	filter:				opacity(0.4);
+	filter:				blur(3px);
+	filter:				drop-shadow(1px,1px,1px,rgb(0,0,0,1));
+}
+.garubarra-shadow {
+	float:				left;
+	left:				4px;
+	top:				4px;
+	width:				40px;
+	height:				40px;
+	clip-path:			polygon(
+							32px 0px,
+							40px 40px,
+							0px 32px
+						);
+	background-color:	black;
+	filter:				opacity(0.4);
+	filter:				blur(3px);
+	filter:				drop-shadow(1px,1px,1px,rgb(0,0,0,1));
+}
+.broken-garubarra-shadow {
+	float:				left;
+	left:				4px;
+	top:				4px;
+	width:				40px;
+	height:				40px;
+	clip-path:			polygon(
+							32px 0px,
+							37px 26px,
+							26px 37px,
+							0px 32px,
+							32px 32px
+						);
+	background-color:	black;
+	filter:				opacity(0.4);
+	filter:				blur(3px);
+	filter:				drop-shadow(1px,1px,1px,rgb(0,0,0,1));
+}
+.ground_explosion {
+	background-image:	url('images/g-explosion.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+	visibility:			hidden;
+}
+.big_ground_object {
+	background-image:	url('images/g-object2.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.big_ground_palette {
+	-webkit-mask-image:	url('images/g-object2.gif');
+	overflow:			hidden;
+}
+.andor_genesis {
+	background-image:	url('images/andorgen.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.andor_palette {
+	-webkit-mask-image:	url('images/andorgen.gif');
+	overflow:			hidden;
+}
+.andor-shadow {
+	-webkit-filter:		drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.7));
+	-moz-filter:		drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.7));
+	-ms-filter:			drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.7));
+	filter:				drop-shadow(8px 8px 2px rgba(0, 0, 0, 0.7));
+}
+.sol {
+	background-image:	url('images/sol.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+.special {
+}
+.bridge {
+	background-image:	url('images/bridge.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+/*
+ * 各部品のスタイル
+ */
+#idMain {
+	position:			relative;
+	margin-left:		auto;
+	margin-right:		auto;
+	top:				10px;
+	width:				240px;
+	height:				288px;
+	transform-origin:	center top;
+}
+
+
+#idGame {
+	position:			relative;
+	margin-left:		auto;
+	margin-right:		auto;
+	width:				224px;
+	height:				288px;
+	z-index:			0;
+	overflow:			hidden;
+}
+#idForest {
+	background-image:	url('images/forest.gif');
+	background-position:0px 0px;
+	z-index:			0;
+	visibility:			hidden;
+	
+will-change: scroll-position;
+
+/* その他方法 */
+-webkit-transform: translateZ(0);
+-webkit-perspective: 1000;
+-webkit-backface-visibility: hidden;	
+}
+#idInTheAir {
+	z-index:			3;
+	visibility:			hidden;
+}
+#idConfig {
+	z-index:			6;
+	background-color:	black;
+	/*
+	background-image:	url('images/forest.gif');
+	*/
+	visibility:			hidden;
+}
+
+#idPaused {
+	position:			absolute;
+	left:				0px;
+	top:				150px;
+	width:				100%;
+	height:				10px;
+	z-index:			5;
+}
+
+#idTitle {
+	position:			absolute;
+	left:				0px;
+	top:				0px;
+	width:				100%;
+	height:				100%;
+	z-index:			4;
+}
+#idLogo {
+	position:			absolute;
+	left:				22px;
+	top:				72px;
+	width:				180px;
+	height:				78px;
+	background-image:	url('images/title.gif');
+	background-repeat:	no-repeat;
+	background-color:	black;
+}
+#idLogoPalette {
+	position:			absolute;
+	-webkit-mask-image:	url('images/logopalette.gif');
+	left:				31px;
+	top:				15px;
+	width:				130px;
+	height:				36px;
+	overflow:			hidden;
+}
+
+#idSpark {
+	position:			absolute;
+	left:				14px;
+	top:				3px;
+	width:				16px;
+	height:				16px;
+	background-image:	url('images/spark.gif');
+	background-repeat:	no-repeat;
+	overflow:			hidden;
+}
+#idPrompt {
+	position:			absolute;
+	left:				0px;
+	top:				184px;
+	width:				100%;
+	height:				100px;
+}
+#idCopyright {
+	position:			absolute;
+	left:				0px;
+	top:				248px;
+	width:				100%;
+	height:				40px;
+	background-image:	url('images/namco.gif');
+	background-position:center center;
+	background-repeat:	no-repeat;
+	visibility:			hidden;
+}
+#idCongrats {
+	position:			absolute;
+	left:				0px;
+	top:				72px;
+	width:				100%;
+	height:				32px;
+	visibility:			hidden;
+}
+#idRanking {
+	position:			absolute;
+	left:				0px;
+	top:				168px;
+	width:				100%;
+	height:				100px;
+	visibility:			hidden;
+}
+#idLogoDemo {
+	position:			absolute;
+	left:				34px;
+	top:				80px;
+	width:				159px;
+	height:				50px;
+	background-image:	url('images/title2.gif');
+	background-repeat:	no-repeat;
+	z-index:			5;
+	visibility:			hidden;
+}
+
+
+#idScoreBoard {
+	position:			absolute;
+	left:				0px;
+	top:				0px;
+	width:				100%;
+	height:				16px;
+	background-repeat:	no-repeat;
+	z-index:			5;
+	visibility:			hidden;
+}
+#id1UP {
+	position:			absolute;
+	left:				27px;
+	top:				0px;
+	width:				16px;
+	height:				8px;
+}
+#idHighScore {
+	position:			absolute;
+	left:				75px;
+	top:				0px;
+	width:				80px;
+	height:				8px;
+}
+#idScore {
+	position:			absolute;
+	left:				0px;
+	top:				8px;
+	width:				100%;
+	height:				8px;
+}
+
+#idRemain {
+	position:			absolute;
+	left:				0px;
+	top:				280px;
+	width:				100%;
+	height:				8px;
+	background-image:	url('images/remain.gif');
+	background-repeat:	no-repeat;
+	z-index:			5;
+	visibility:			hidden;
+}
+
+#idLoading {
+	position:			relative;
+	margin-left:		auto;
+	margin-right:		auto;
+	top:				150px;
+	width:				140px;
+	height:				10px;
+	border:				1px solid #ffffff;
+}
+#idProgressBar {
+	position:			absolute;
+	left:				0px;
+	top:				0px;
+	width:				0px;
+	height:				100%;
+	background:			#aaaaaa;
+	z-index:			1;
+}
+#idProgress {
+	position:			absolute;
+	left:				0px;
+	top:				0px;
+	width:				100%;
+	height:				10px;
+	text-align:			center;
+	font-size:			10px;
+	line-height:		8px;
+	color:				#ffffff;
+	z-index:			2;
+}
+#idMessage {
+	position:			absolute;
+	left:				0px;
+	top:				263px;
+	width:				100%;
+	height:				20px;
+	background-image:	url('images/namco.gif');
+	background-position:19px 0px;
+	background-repeat:	no-repeat;
+	display:			none;
+}
+
+
+#idInstruction {
+	position:			absolute;
+	left:				-120px;
+	bottom:				0px;
+	width:				120px;
+	height:				48px;
+	z-index:			1;
+	transform-origin:	right bottom;
+}
+#idInstruction table th,td {
+	text-align:			center;
+	font-family:		Ariel;
+	font-size:			12px;
+	line-height:		12px;
+	color:				#aaaaaa;
+}
+
+#idSound {
+	position:			absolute;
+	left:				240px;
+	top:				0px;
+	width:				38px;
+	height:				38px;
+	z-index:			1;
+	transform-origin:	left top;
+}
+#idFooter {
+	position:			relative;
+	top:				10px;
+	left:				-200px;
+	width:				640px;
+	transform-origin:	center top;
+}
+#idFooter td {
+	vertical-align:		middle;
+	font-size:			12px;
+	font-family:		Arial;
+	font-weight:		200;
+	line-height:		0;
+	white-space:		nowrap;
+}
+#idFooterL {
+	text-align:			left;
+	width:				33%;
+}
+#idFooterM {
+	text-align:			center;
+	width:				34%;
+}
+#idFooterR {
+	text-align:			right;
+	width:				33%;
+}
+#idFC2 {
+	text-align:			center;
+	width:				100%;
+	transform-origin:	center top;
+}
+
+#idDebug {
+	position:			absolute;
+	left:				240px;
+	top:				40px;
+	color:				white;
+	font-family:		monospace;
+	z-index:			1;
+	transform-origin:	left top;
+	display:			none;
+}
+#idDebug1 {
+	position:			relative;
+	width:				100%;
+}
+#idDebug2 {
+	position:			relative;
+	width:				100%;
+}
