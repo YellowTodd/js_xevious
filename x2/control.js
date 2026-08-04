@@ -169,8 +169,15 @@ document.addEventListener( 'keyup', OnKeyUp );
 let g_nMouseX = 0;
 let g_nMouseY = 0;
 
+function IsMobileControlTarget(e) {
+	return !!(e.target && e.target.closest && e.target.closest('#idJoyStick, #idActionButtons'));
+}
+
 const OnMouseDown = function(e) {
 	_stopEvent(e);
+
+	if( IsMobileControlTarget(e) )
+		return;
 
 	if( e.targetTouches ) {
 		if(e.targetTouches.length > 1)
@@ -199,6 +206,9 @@ const OnMouseDown = function(e) {
 const OnMouseUp = function(e) {
 	_stopEvent(e);
 
+	if( IsMobileControlTarget(e) )
+		return;
+
 	if( e.targetTouches ) {
 		if(e.targetTouches.length > 1)
 			return;
@@ -225,6 +235,9 @@ const OnMouseUp = function(e) {
 
 const OnMouseMove = function(e) {
 	_stopEvent(e);
+
+	if( IsMobileControlTarget(e) )
+		return;
 
 	if( !g_App )
 		return;

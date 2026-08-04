@@ -42,8 +42,15 @@
         <div id="idMessage"></div>
         <div id="idConfig" class="game_screen"></div>
       </div>
-      <div id="idJoyStick">
-        <div id="idKnob"></div>
+      <div class="mobile-controls" aria-label="Mobile controls">
+        <div id="idJoyStick">
+          <div id="idKnob"></div>
+        </div>
+        <div id="idActionButtons">
+          <button id="idButtonStart" type="button" aria-label="Start button">S</button>
+          <button id="idButtonA" type="button" aria-label="A button">A</button>
+          <button id="idButtonB" type="button" aria-label="B button">B</button>
+        </div>
       </div>
       <div id="idInstruction">
         <table>
@@ -77,5 +84,6 @@
         </tr>
       </table>
     </div>
+    <script type="text/javascript" charset="utf-8" src="mobile-control.js"></script>
   </body>
 </html>
